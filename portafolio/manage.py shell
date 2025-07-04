@@ -1,0 +1,28 @@
+codigo = """
+from portafolio.models import Proyecto
+
+Proyecto.objects.create(
+    titulo="Sistema de Portafolio Web",
+    descripcion="Aplicación para mostrar trabajos académicos",
+    fecha="2025-07-04",
+    imagen="proyectos/portafolio1.jpg",
+    url="https://miportafolio.com"
+)
+
+Proyecto.objects.create(
+    titulo="API REST con Django",
+    descripcion="Interfaz para acceder a datos de proyectos en formato JSON",
+    fecha="2025-06-28",
+    imagen="proyectos/api.png",
+    url="https://api.miportafolio.com"
+)
+
+print("Datos de ejemplo insertados correctamente.")
+"""
+
+# Guardar el script como archivo temporal
+with open("insertar_datos.py", "w") as f:
+    f.write(codigo)
+
+# Ejecutar el script en el shell de Django
+!python manage.py shell < insertar_datos.py
