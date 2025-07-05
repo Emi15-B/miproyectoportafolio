@@ -1,0 +1,56 @@
+{% extends "portafolio/base.html" %}
+
+{% load form_filters %}
+
+{% block title %}Contacto{% endblock %}
+
+{% block content %}
+<h2 class="text-center text-white mt-4 mb-4">Contáctame</h2>
+
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-success w-100 text-center">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+
+
+<div class="container d-flex flex-wrap justify-content-center gap-5">
+
+  <!-- FORMULARIO -->
+  <form method="post">
+    {% csrf_token %}
+    
+    <div class="form-group">
+        {{ form.nombre.label_tag }}
+        {{ form.nombre|add_class:"form-control" }}
+    </div>
+
+    <div class="form-group">
+        {{ form.email.label_tag }}
+        {{ form.email|add_class:"form-control" }}
+    </div>
+
+    <div class="form-group">
+        {{ form.mensaje.label_tag }}
+        {{ form.mensaje|add_class:"form-control" }}
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-2">Enviar</button>
+</form>
+
+  <!-- INFORMACIÓN PERSONAL -->
+  <div style="flex: 1; min-width: 300px;">
+    <div class="bg-dark text-white p-4 rounded shadow">
+      <h4>Información de contacto</h4>
+      <p><strong>Correo:</strong> {{ mi_contacto.correo }}</p>
+      <p><strong>Teléfono:</strong> {{ mi_contacto.telefono }}</p>
+      <p><strong>Instagram:</strong> <a href="https://instagram.com/{{ mi_contacto.instagram|slice:'1:' }}" target="_blank" class="text-info">{{ mi_contacto.instagram }}</a></p>
+      <p><strong>Instagram Emprendimiento:</strong> <a href="https://instagram.com/{{ mi_contacto.instagram_emprendimiento|slice:'1:' }}" target="_blank" class="text-info">{{ mi_contacto.instagram_emprendimiento }}</a></p>
+      <p><strong>Ubicación:</strong> {{ mi_contacto.ubicacion }}</p>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

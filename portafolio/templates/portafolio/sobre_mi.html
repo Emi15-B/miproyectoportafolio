@@ -1,0 +1,31 @@
+{% extends 'portafolio/base.html' %}
+{% load static %}
+
+{% block title %}Sobre mí - Mi Portafolio{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="text-center mb-5">Sobre mí</h1>
+
+  <div class="row justify-content-center">
+      <!-- Imagen -->
+       <div class="col-md-4 text-center mb-4">
+      <img src="{% static 'img/perfil.jpg' %}" alt="Mi foto" class="img-fluid rounded-4 shadow" style="max-height: 300px;">
+    </div>
+
+    <!-- Información personal -->
+
+    <div class="col-md-8 bg-dark text-light p-4 rounded-4 shadow">
+      <p><strong>Nombre:</strong> Emileth Berrios</p>
+      <p><strong>Carrera:</strong> Ingeniería en Informática</p>
+      <p><strong>Universidad:</strong> UNELLEZ</p>
+
+      <p><strong>Biografía:</strong> Soy estudiante apasionada por la tecnología y el desarrollo de software. Me gusta aprender constantemente y aplicar mis conocimientos en proyectos reales. Disfruto del trabajo en equipo, resolver problemas y crear aplicaciones útiles.</p>
+
+      <p><strong>Emprendimiento:</strong> Además de mis estudios, tengo un pequeño negocio de personalización de productos, papelería creativa y arreglos para eventos. Este emprendimiento me ha ayudado a desarrollar habilidades de diseño, gestión de tiempo, atención al cliente y creatividad. Puedes ver algunos de mis trabajos en la seccion de productos, en mis redes sociales o contactarme para pedidos personalizados.</p>
+
+      <p><strong>Intereses:</strong> Desarrollo web, bases de datos, diseño gráfico, automatización de tareas, branding, emprendimiento y tecnología educativa.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

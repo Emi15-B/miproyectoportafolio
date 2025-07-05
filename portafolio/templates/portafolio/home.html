@@ -1,0 +1,40 @@
+{% extends 'portafolio/base.html' %}
+
+{% block title %}Inicio - Mi Portafolio{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <div class="text-center text-light mb-4">
+    <h2>¡Hola! Soy Emileth Berrios</h2>
+    <p>Estudiante de Ingeniería en Informática en la Universidad Experimental de los Llanos Ezequiel Zamora (UNELLEZ). Apasionada por el desarrollo de software y la tecnología, me encanta transformar ideas en soluciones digitales.</p>
+    <p>En este rincón encontrarás mis proyectos académicos y personales, donde aplico diferentes tecnologías. ¿Mi meta? Sumergirme en el mundo tech con creatividad y rigor, mientras aprendo de cada línea de código. ¡Bienvenido/a!</p>
+  </div>
+
+  <h1 class="text-center mb-5">Mis Proyectos</h1>
+
+  <div class="row">
+    {% for proyecto in proyectos %}
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow-sm rounded-4 border-0 hover-shadow transition-shadow">
+        <!-- Imagen del proyecto -->
+        <img src="{{ proyecto.imagen.url }}"
+             alt="Imagen del proyecto"
+             class="card-img-top rounded-top-4"
+             style="height: 220px; object-fit: cover;">
+
+        <!-- Cuerpo de la tarjeta -->
+        <div class="card-body">
+          <h5 class="card-title">{{ proyecto.titulo }}</h5>
+          <p class="card-text">{{ proyecto.descripcion|slice:":120" }}...</p>
+          <p class="card-text"><small class="text-muted">{{ proyecto.fecha }}</small></p>
+          <a href="{% url 'detalle_proyecto' proyecto.id %}" class="btn btn-custom mt-2">Ver más</a>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <p class="text-muted">No hay proyectos registrados aún.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

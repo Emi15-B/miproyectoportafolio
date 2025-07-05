@@ -1,0 +1,32 @@
+{% extends 'portafolio/base.html' %}
+
+{% block title %}{{ proyecto.titulo }} - Detalles{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="text-center mb-4">{{ proyecto.titulo }}</h1>
+
+  <div class="row justify-content-center">
+    <!-- Imagen principal -->
+    <div class="col-md-8 mb-4">
+      <img src="{{ proyecto.imagen.url }}" 
+           alt="Imagen de {{ proyecto.titulo }}" 
+           class="img-fluid rounded-4 shadow-sm w-100"
+           style="max-height: 450px; object-fit: cover;">
+    </div>
+
+    <!-- Información del proyecto -->
+    <div class="col-md-10 bg-dark text-light p-4 rounded-4 shadow">
+      <p><strong>Fecha:</strong> {{ proyecto.fecha }}</p>
+      <p><strong>Descripción:</strong></p>
+      <p>{{ proyecto.descripcion }}</p>
+
+      {% if proyecto.tecnologias %}
+        <p><strong>Tecnologías usadas:</strong> {{ proyecto.tecnologias }}</p>
+      {% endif %}
+
+      <a href="{% url 'home' %}" class="btn btn-secondary mt-3">← Volver a proyectos</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

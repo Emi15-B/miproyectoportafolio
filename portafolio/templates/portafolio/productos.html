@@ -1,0 +1,23 @@
+{% extends "portafolio/base.html" %}
+
+{% block title %}Productos Personalizados{% endblock %}
+
+{% block content %}
+<h2 class="text-center text-white mt-4">Nuestros Productos Personalizados</h2>
+
+<div class="container d-flex flex-wrap justify-content-center gap-4 mt-4">
+    {% for producto in productos %}
+        <div class="card shadow" style="width: 18rem;">
+            <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ producto.nombre }}</h5>
+                <p class="card-text">{{ producto.descripcion }}</p>
+                <p><strong>Precio:</strong> ${{ producto.precio }}</p>
+                <p><strong>Disponible:</strong> {{ producto.disponible|yesno:"Sí,No" }}</p>
+            </div>
+        </div>
+    {% empty %}
+        <p class="text-white">No hay productos disponibles en este momento.</p>
+    {% endfor %}
+</div>
+{% endblock %}
